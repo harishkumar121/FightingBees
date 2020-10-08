@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/harishkumar121/fbkick.git"
+    "url": "git+https://github.com/harishkumar121/ChatApp.git"
   },
   "author": "harish",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/harishkumar121/fbkick/issues"
+    "url": "https://github.com/harishkumar121/ChatApp/issues"
   },
-  "homepage": "https://github.com/harishkumar121/fbkick#readme",
+  "homepage": "https://github.com/harishkumar121/ChatApp#readme",
   "dependencies": {
     "async": "^3.2.0",
     "body-parser": "^1.19.0",
