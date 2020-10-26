@@ -6,8 +6,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
+   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/fontawesome.min.css" 
+    integrity="sha512-kJ30H6g4NGhWopgdseRb8wTsyllFUYIx3hiUwmGAkgA9B/JbzUBDQVr2VVlWGde6sdBVOG7oU8AL35ORDuMm8g==" 
+    crossorigin="anonymous" />
     <link rel="stylesheet" href="/css/login.css">
+   
 
 </head>
 
@@ -45,13 +49,13 @@
                                 </li>
 
 
-                                <!-- <li class="reg_link2">
+                                <li class="reg_link2">
                                     <h2 class="reg-div">
                                         <a href="/signup">
                                             Register
                                         </a>
                                     </h2>
-                                </li> -->
+                                </li>
                             </ul>
                         </div>
 
@@ -63,38 +67,38 @@
 
 <div id="main">
     <div class="main">
-        <form action="/" method="post">
+        <form action="/signup" method="post">
+            <h1>
+                <a href="" class="btn=social btn-facebook btn-lg">
+                    <i class="fa fa-facebook-f"></i> Sign Up with Facebook
+                </a>
+            </h1>
 
             <h1>
-                Login
+                Register
             </h1>
 
             <% if(hasErrors){ %>
-            
+                <div class='alert alert-danger text-center'>
+                    <a href ='#', class="close" data-dismiss='alert'
+                     aria-label="close"
+                    >&times;</a>
                     <% _.forEach(messages, function(error){
 
                     %>
-                    <div class='alert alert-danger text-center'>
-                        <a href ='#', class="close" data-dismiss='alert'
-                         aria-label="close"
-                        >&times;
-                       
-                    </a>
                     <%= error %> <br>
-                   
-                </div>
 
                     <%  })%>
 
-                
+
+                </div>
 
             <%} %>
-
             <div class="inset">
-                <!-- <p>
+                <p>
                   <label for="username">USERNAME</label>
                   <input type="text" name="username" class="" placeholder="">
-                </p> -->
+                </p>
 
                 <p>
                     <label for="email">EMAIL ADDRESS</label>
@@ -108,8 +112,8 @@
             </div>
 
             <p class="p-container">
-                <span><a href="/signup">Register</a></span>
-                <input type="submit" class="login-log" style=" background: #3bb5ec; border: #3bb5ec;" value="Login">
+                <span><a href="/">Login</a></span>
+                <input type="submit" class="login-log" style=" background: #3bb5ec; border: #3bb5ec;" value="Register">
             </p>
         </form>
     </div>

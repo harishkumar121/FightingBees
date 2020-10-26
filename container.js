@@ -5,7 +5,10 @@ const container = dependable.container();
 
 const simpleDependencies = [
     ['_','lodash'],
-    ['async','async']
+    ['async','async'],
+    ['mongoose','mongoose'],
+    ['passport','passport'],
+    ['validator','express-validator']
 ];
 
 
