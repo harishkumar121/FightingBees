@@ -30,7 +30,7 @@ build/Release
 
 # Dependency directories
 node_modules
-/secret
+secret
 jspm_packages
 
 # Optional npm cache directory
