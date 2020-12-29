@@ -39,6 +39,8 @@ passport.use(new FacebookStrategy({
             const newUser = new User();
             newUser.facebook = profile.id
             newUser.fullname = profile.displayName;
+            newUser.username = profile.displayName;
+            
             newUser.email = profile._json.email;
             newUser.userImage = 'https://graph.facebook.com/'+profile.id+'/picture?type=large';
             newUser.fbTokes.push({token:token})

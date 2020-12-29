@@ -35,7 +35,7 @@ module.exports = function(_,passport,User,validator){
         indexPage: function(req,res){
             const errors = req.flash('error')
 
-            return res.render('index',{title:'Footballkik | Login',messages:errors,
+            return res.render('index',{title:'FightingBees | Login',messages:errors,
             hasErrors:errors.length>0  });
         },
 
@@ -48,7 +48,7 @@ module.exports = function(_,passport,User,validator){
 
         getSignUp: function(req,res){
             const errors = req.flash('error')
-            return res.render('signup',{title:'Footballkik | Login',messages:errors,
+            return res.render('signup',{title:'FightingBees | Login',messages:errors,
             hasErrors:errors.length>0  })
         },
 
