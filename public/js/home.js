@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    
+    var socket = io()
     $('#favorite').on('submit', function(e){
         e.preventDefault();
         
@@ -14,7 +14,9 @@ $(document).ready(function(){
                 clubName: clubName
             },
             success: function(){
-                console.log(clubName);
+                setTimeout(function(){
+                    window.location.reload();
+                }, 200);
             }
         })
         

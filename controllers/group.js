@@ -9,6 +9,7 @@ const Club = require('../models/clubs')
 const User  = require('../models/users')
 const Message = require('../models/message')
 const Group  = require('../models/groupmessage')
+// const FriendResult = require('../helpers/FriendResult')
 
 module.exports = function(_,passport,validator,async,FriendResult){
 
@@ -28,6 +29,7 @@ module.exports = function(_,passport,validator,async,FriendResult){
                        User.findOne({'username':req.user.username})
                        .populate('request.userId')
                        .exec((err,result)=>{
+                           
                            callback(err,result)
                        })
                    },
@@ -77,18 +79,18 @@ module.exports = function(_,passport,validator,async,FriendResult){
                    const results3 = results[2]
                 //    console.log(results1)
                 const { name } = req.params;
+                
                 res.render('groupchat/group',{title:"Fighting Bees - Group", user:req.user, groupName:name, data: results1, chat: results2, groupMsg: results3});
 
                })
                           },
            groupPostPage: function(req, res){
             
-            FriendResult.PostRequest(req,res,'/grpup'+req.params.name)
+            FriendResult.PostRequest(req,res,'/group/'+req.params.name)
             
             async.parallel([
                 function(callback){
                     if(req.body.message){
-                        console.log(req.body)
                         const group = new Group();
                         group.sender = req.user._id;
                         group.body = req.body.message;

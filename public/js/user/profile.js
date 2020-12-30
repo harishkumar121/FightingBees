@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    var socket = io()
     $('.add-btn').on('click', function(){
         $('#add-input').click();
     });
@@ -36,6 +37,7 @@ $(document).ready(function(){
         var mantra = $('#mantra').val();
         var upload = $('#add-input').val();
         var image = $('#user-image').val();
+        var userImage = $('#add-input').val();
         
         var valid = true;
         
@@ -43,15 +45,24 @@ $(document).ready(function(){
             $('#add-input').val(image);
         }
         
-        if(username == '' || fullname == '' || country == '' || gender == '' || mantra == ''){
+        if(username == '' || fullname == '' || country == '' || gender == ''){
             valid = false;
             $('#error').html('<div class="alert alert-danger">You cannot submit an empty field</div>');
         }else{
             upload = $('#add-input').val();
             $('#error').html('');
+            
         }
         
         if(valid == true){
+            console.log({
+                username: username,
+                fullname: fullname,
+                gender: gender,
+                country: country,
+                mantra: mantra,
+                upload: upload
+            })
             $.ajax({
                 url: '/settings/profile',
                 type: 'POST',
@@ -61,7 +72,8 @@ $(document).ready(function(){
                     gender: gender,
                     country: country,
                     mantra: mantra,
-                    upload: upload
+                    upload: upload,
+                    userImage: image
                 },
                 success: function(){
                     setTimeout(function(){

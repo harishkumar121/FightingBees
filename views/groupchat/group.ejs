@@ -19,7 +19,9 @@
 </head>
 
 <body>
+    <!-- Nav Bar Start -->
 <nav class="navbar navbar-default">
+   
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -62,13 +64,14 @@
 				</div>
 				
 				<div class="col-md-12">
-                    <% if(user.request.length > 0) { %>
-                        <% _.forEach(user.request, function(val){ %>
-
+                    <% if(data.request.length > 0) { %>
+                        <% _.forEach(data.request, function(val){ %>
+                            <%   val.userId %>
 					<div class="row">
 						<div class="col-md-3">
 							<p class="text-center">
-								<img src="https://placehold.it/300x300" class="img-circle img-responsive dropdown-img" />
+                                
+								<img src="https://fbchat.s3.amazonaws.com/<%= val.userId.userImage %>" class="img-circle img-responsive dropdown-img" />
 							</p>
 						</div>
 						<div class="col-md-9 pleft-0">
@@ -76,6 +79,7 @@
 								<div class="col-md-12">
 									<div class="col-md-12">
 										<p class="text-left">
+                                          
 											<strong id=""> <%= val.username %></strong>
 										</p>
 									</div>
@@ -168,7 +172,7 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <p class="text-center">
-                                <img src="https://placehold.it/300x300" class="img-circle img-responsive dropdown-img" />
+                                <img src="https://fbchat.s3.amazonaws.com/<%= val.body.receiver.userImage %>" class="img-circle img-responsive dropdown-img" />
                                 </p>
                             </div>
                             <div class="col-md-9 pleft-0">
@@ -196,7 +200,7 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <p class="text-center">
-                                       <img src="http://placehold.it/300x300" class="img-circle img-responsive dropdown-img" />
+                                       <img src="https://fbchat.s3.amazonaws.com/<%= val.body.sender.userImage %>" class="img-circle img-responsive dropdown-img" />
                                     </p>
                                 </div>
                                 <div class="col-md-9 pleft-0">
@@ -233,7 +237,7 @@
   
  <!--  -->
 
-
+       <li><a href="/latest-football-news">Football News</a></li>
         <li><a href="/members">Members</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= user.username %> <span class="caret"></span></a>
@@ -248,10 +252,10 @@
   </div>
 </nav>
 
-
+<!-- Nav Bar End -->
     <div class="col-md-12">
         <input type="hidden" id="name-user" value="<%=  user.username %>">
-        <input type="hidden" id="name-user" value="<%=  user.userImage %>">
+        <input type="hidden" id="name-image" value="<%=  user.userImage %>">
 
         <div class="col-md-12">
             <div class="chat_container">
@@ -267,7 +271,7 @@
 
                                             </div>
                                             <div class="user cover-img">
-                                                <img src="http://via.placeholder.com/300" class="img-circle" alt="">
+                                                <img src="https://fbchat.s3.amazonaws.com/<%= user.userImage %>" class="img-circle" alt="">
                                             </div>
                                             <div class="content">
                                                 <div class="main">
@@ -282,7 +286,7 @@
                                                 </div>
                                                 <div class="footer">
                                                     <i class="fa fa-mail-forward"></i> 
-                                                    <a href="#">
+                                                    <a style="text-align:none" href="/profile/<%= user.username %>">
                                                       View My Profile
                                                     </a>
                                                 </div>
@@ -306,12 +310,15 @@
                                                         Online Friends <span id="numOfFriends"></span>
                                                     </p>
                                                     <hr style="margin-top:10px" />
-                                                    <% if(user.friendsList.length > 0) { %>
-                                                        <% _.forEach(user.friendsList, function(value) { %>
-                                                        <div class="friend" hidden>@<%= value.friendName %></div>
+                                                    <% if(data.friendsList.length > 0) { %>
+                                                        <%  _.forEach(data.friendsList, function(val) { %>
+                                                           
+                                                        <div class="friend" hidden >@<%= val.friendName %></div>
                                                         <% }) %>
                                                     <% } %>
-                                                    <div class="onlineFriends"></div>
+                                                    <div class="onlineFriends">
+
+                                                    </div>
 
                                                 </div>
 
@@ -345,7 +352,7 @@
                                             <% if(groupName === val.name) {%>
                                              <li class="left">
                                                 <span class="chat-img1 pull-left">
-                                                    <img src="https://footballkik.s3.amazonaws.com/<%= val.sender.userImage %>" class="img-circle" alt="">
+                                                    <img src="https://fbchat.s3.amazonaws.com/<%= val.sender.userImage %>" class="img-circle" alt="">
                                                 </span>
                                                 <div class="chat-body1">
                                                     <span class="chat-name"><%= val.sender.username %></span>
@@ -360,7 +367,7 @@
                                     <script id="message-template" type="text/template"> 
                                         <li class="left">
                                             <span class="chat-img1 pull-left">
-                                                <img src="https://footballkik.s3.amazonaws.com/{{userImage}}" class="img-circle" alt="">
+                                                <img src="https://fbchat.s3.amazonaws.com/{{userImage}}" class="img-circle" alt="">
                                             </span>
                                             <div class="chat-body1">
                                                 <span class="chat-name">{{ sender }}</span>
@@ -375,7 +382,7 @@
                               <form action="#" id="message-form" method="post">
                                     <input tupe='hidden' id="groupName" value="<%= groupName %>">
                                     <input type="hidden" name="sender" id="sender" value="<%= user.username || user.fullname %>">
-                                  <textarea class="form-control" name="message" id="msg" placeholder="Type a message"></textarea>
+                                  <textarea class="form-control add-items" name="message" id="msg"  placeholder="Type a message"></textarea>
                                   <div class="clearfix"></div>
                                   <div class="chat_bottom">
                                       <button id="send-message" class="pull-right btn btn-primary" style="background: #4aa1f3; border: #4aa1f3; ">

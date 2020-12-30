@@ -16,9 +16,13 @@ const socketIO = require('socket.io');
 const { Users } = require('./helpers/UsersClass')
 const { Global } = require('./helpers/Global')
 const container = require('./container');
+
+const compression = require('compression')
+const helmet = require('helmet')
+// const interests = require('./controllers/interests');
 // const _ = require('lodash')
 
-container.resolve(function(users, _, admin, home, group, results, privatechat, profile){
+container.resolve(function(users, _, admin, home, group, results, privatechat, profile, interests, news){
 
     mongoose.set('useFindAndModify',false);
     mongoose.set('useCreateIndex',true)
@@ -53,8 +57,9 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
     group.SetRouting(router);
     results.SetRouting(router);
     privatechat.SetRouting(router)
-    profile.SetRouting(router)
-
+    profile.SetRouting(router);
+    interests.SetRouting(router)
+    news.SetRouting(router)
 
     app.use(router)
 
@@ -67,6 +72,9 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
         require('./passport/passport-local');
         require('./passport/passport-facebook');
         require('./passport/passport-google')
+
+        app.use(compression());
+        app.use(helmet());
 
 
         app.use(express.static('public'));

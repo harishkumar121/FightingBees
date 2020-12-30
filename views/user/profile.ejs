@@ -64,13 +64,13 @@
                   </div>
                   
                   <div class="col-md-12">
-                      <% if(user.request.length > 0) { %>
-                          <% _.forEach(user.request, function(val){ %>
+                      <% if(data.request.length > 0) { %>
+                          <% _.forEach(data.request, function(val){ %>
   
                       <div class="row">
                           <div class="col-md-3">
                               <p class="text-center">
-                                  <img src="https://placehold.it/300x300" class="img-circle img-responsive dropdown-img" />
+                                  <img src="https://fbchat.s3.amazonaws.com/<%= val.userImage %>" class="img-circle img-responsive dropdown-img" />
                               </p>
                           </div>
                           <div class="col-md-9 pleft-0">
@@ -122,7 +122,9 @@
   </li>
   
   
-  <!-- -->
+  <!-- 
+  
+   -->
    <li>
          
       <% var numberOfTrue = 0 %>
@@ -168,7 +170,7 @@
                           <div class="row">
                               <div class="col-md-3">
                                   <p class="text-center">
-                                  <img src="https://placehold.it/300x300" class="img-circle img-responsive dropdown-img" />
+                                  <img src="https://fbchat.s3.amazonaws.com/<%= val.body.receiver.userImage %>" class="img-circle img-responsive dropdown-img" />
                                   </p>
                               </div>
                               <div class="col-md-9 pleft-0">
@@ -196,7 +198,7 @@
                               <div class="row">
                                   <div class="col-md-3">
                                       <p class="text-center">
-                                         <img src="http://placehold.it/300x300" class="img-circle img-responsive dropdown-img" />
+                                         <img src="https://fbchat.s3.amazonaws.com/<%= val.body.sender.userImage %>" class="img-circle img-responsive dropdown-img" />
                                       </p>
                                   </div>
                                   <div class="col-md-9 pleft-0">
@@ -247,8 +249,8 @@
       </div>
     </div>
   </nav>
-
-<!--  -->
+  
+<!-- Nav Bar End  -->
 
     <div class="col-md-12 mob-clearfix margin-80">
         <input type="hidden" id="name-user" value="<%= user.username %>">
@@ -265,7 +267,7 @@
                             <div class="col-md-12">
                                 <div class="profile-sidebar">
                                         <div class="img-container">
-                                            <img src="https://footballkik.s3.amazonaws.com/<%= user.userImage %>" class="img-responsive img-user" id="show_img">
+                                            <img src="https://fbchat.s3.amazonaws.com/<%= user.userImage %>" class="img-responsive img-user" id="show_img">
                                         </div>
                                 
                                     <div class="profile-usertitle">
@@ -357,7 +359,8 @@
                                 </div>
 
                                 <div>
-                                    <label style="color:#4aa1f3 !important">Add Profile Photo</label><br>
+                                    <label style="color:#4aa1f3 !important">Add Profile Photo</label>
+                                    <br>
                                     <input type="hidden" id="user-image" value="<%= user.userImage %>">
                                     <button class="btn btn-lg add-btn" style="background-color:#4aa1f3 !important; color:white" type="button">Add Profile Image</button>
                                     <input type="file" class="form-control" name="upload" id="add-input" style="display: none">
@@ -385,9 +388,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> 
 <script src="/socket.io/socket.io.js"></script>
+<script src="/js/user/profile.js"></script>
 <script src="/js/messagelink.js"></script>
 <script src="/js/group/sendrequest.js"></script> 
-<script src="/js/user/profile.js"></script>
 <script src="/js/home.js"></script>
 <script src="/js/global.js"></script>
 <script src="/js/deparam.js"></script>

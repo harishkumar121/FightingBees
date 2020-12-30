@@ -78,6 +78,7 @@ module.exports = function(async, FriendResult){
                 },
                 
                 function(result, callback){
+                    console.log(req.body)
                     if(req.body.upload === null || req.body.upload === ''){
                         Users.updateOne({
                             '_id':req.user._id
