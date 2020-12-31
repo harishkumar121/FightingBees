@@ -2,7 +2,7 @@ const AWS = require('aws-sdk')
 
 const multer = require('multer')
 const multerS3 = require('multer-s3')
-const secret = require('../secret/secreteFile')
+// const secret = require('../secret/secreteFile')
 
 AWS.config.update({
     accessKeyId:process.env.AWS_ACCESSKEY, //secret.aws.clientID,

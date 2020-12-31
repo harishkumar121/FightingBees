@@ -3,7 +3,7 @@
 const passport = require('passport');
 const User = require('../models/users');
 const FacebookStrategy = require('passport-facebook').Strategy;
-const secret = require('../secret/secreteFile')
+// const secret = require('../secret/secreteFile')
 
 passport.serializeUser((user,done)=>{
 
