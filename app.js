@@ -22,7 +22,7 @@ const compression = require('compression')
 const helmet = require('helmet')
 // const interests = require('./controllers/interests');
 // const _ = require('lodash')
-const uri =  process.env.MONGODB_URI  // ||"mongodb+srv://harish:u0f6woNE4FETswWR@fightingbees.99hdt.mongodb.net/football?retryWrites=true&w=majority";
+const uri =  process.env.MONGODB_URI 
 container.resolve(function(users, _, admin, home, group, results, privatechat, profile, interests, news){
 
     mongoose.set('useFindAndModify',false);
@@ -63,7 +63,7 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
     news.SetRouting(router)
 
     app.use(router)
-    
+
     app.use(function(req,res){
         res.render('404')
     });
