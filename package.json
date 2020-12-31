@@ -1,5 +1,5 @@
 {
-  "name": "ChatApp",
+  "name": "FightingBees",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -14,14 +14,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/harishkumar121/ChatApp.git"
+    "url": "git+https://github.com/harishkumar121/FightingBees.git"
   },
   "author": "harish",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/harishkumar121/ChatApp/issues"
+    "url": "https://github.com/harishkumar121/FightingBees/issues"
   },
-  "homepage": "https://github.com/harishkumar121/ChatApp#readme",
+  "homepage": "https://github.com/harishkumar121/FightingBees#readme",
   "dependencies": {
     "async": "^3.2.0",
     "aws-sdk": "^2.775.0",
