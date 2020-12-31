@@ -7,7 +7,7 @@ $(document).ready(function(){
 
 function GetResult(){
     $.ajax({
-        url: 'http://content.guardianapis.com/football?page-size=150&order-by=newest&show-fields=all&api-key=5ba60cf8-6bd6-4c49-9304-9cd851db3381',
+        url: 'http://content.guardianapis.com/football?page-size=50&order-by=newest&show-fields=all&api-key=5ba60cf8-6bd6-4c49-9304-9cd851db3381',
         type: 'GET',
         dataType: 'json',
         success: function(data){
