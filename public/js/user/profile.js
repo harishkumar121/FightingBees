@@ -45,14 +45,14 @@ $(document).ready(function(){
             $('#add-input').val(image);
         }
         
-        if(username == '' || fullname == '' || country == '' || gender == ''){
-            valid = false;
-            $('#error').html('<div class="alert alert-danger">You cannot submit an empty field</div>');
-        }else{
-            upload = $('#add-input').val();
-            $('#error').html('');
+        // if(username == '' || fullname == '' || country == '' || gender == ''){
+        //     valid = false;
+        //     $('#error').html('<div class="alert alert-danger">You cannot submit an empty field</div>');
+        // }else{
+        //     upload = $('#add-input').val();
+        //     $('#error').html('');
             
-        }
+        // }
         
         if(valid == true){
             console.log({

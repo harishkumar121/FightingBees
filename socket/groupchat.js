@@ -32,6 +32,9 @@ module.exports = function(io,Users){
         
         socket.on('disconnect', () => {
             var user = users.RemoveUser(socket.id);
+
+            console.log(user,"user disconnected")
+
             
             if(user){
                 io.to(user.room).emit('usersList', users.GetUsersList(user.room));

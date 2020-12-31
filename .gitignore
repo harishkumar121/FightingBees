@@ -1,9 +1,8 @@
 # Excel and csv files
 *.xlsx
 # Dependency directories
-node_modules
-secret
-jspm_packages
+/node_modules
+/secret
 
 # Optional npm cache directory
 .npm

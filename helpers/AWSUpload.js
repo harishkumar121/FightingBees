@@ -5,9 +5,9 @@ const multerS3 = require('multer-s3')
 const secret = require('../secret/secreteFile')
 
 AWS.config.update({
-    accessKeyId:secret.aws.clientID,
-    secretAccessKey:secret.aws.clientSecret,
-    region:'us-east-2'
+    accessKeyId:process.env.AWS_ACCESSKEY, //secret.aws.clientID,
+    secretAccessKey: process.env.AWS_SECRETKEY, //secret.aws.clientSecret,
+    region:process.env.AWS_REGION 
 })
 
 const s0 = new AWS.S3({});

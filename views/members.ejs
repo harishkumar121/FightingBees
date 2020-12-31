@@ -66,7 +66,7 @@
                            <% _.forEach(val, function(val2) { %>
                             <form action="/home" method="post" id="favorite">
                                 <div class="item col-md-3">
-                                   <a style="text-decoration:none" href="#">
+                                   <a style="text-decoration:none" href="/profile/<%= val2.username %>">
                                     <div class="thumbnail thumb_nail">
                                        <img src="https://fbchat.s3.amazonaws.com/<%= val2.userImage %>" class="">
                                         <div class="caption">

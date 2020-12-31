@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const ejs = require('ejs')
@@ -21,13 +22,13 @@ const compression = require('compression')
 const helmet = require('helmet')
 // const interests = require('./controllers/interests');
 // const _ = require('lodash')
-
+const uri =  process.env.MONGODB_URI  // ||"mongodb+srv://harish:u0f6woNE4FETswWR@fightingbees.99hdt.mongodb.net/football?retryWrites=true&w=majority";
 container.resolve(function(users, _, admin, home, group, results, privatechat, profile, interests, news){
 
     mongoose.set('useFindAndModify',false);
     mongoose.set('useCreateIndex',true)
     mongoose.Promise = global.Promise;
-    mongoose.connect('mongodb://localhost/chatapp',{useNewUrlParser:true})
+    mongoose.connect(uri,{useNewUrlParser:true})
 
     const app = SetupExpress();
 
@@ -36,7 +37,7 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
         const app = express()
         const server = http.createServer(app);
         const io  = socketIO(server);
-        server.listen(4000,function(){
+        server.listen(process.env.PORT || 4000,function(){
 
             console.log('listening on port 4000');
         });
@@ -62,13 +63,18 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
     news.SetRouting(router)
 
     app.use(router)
-
+    
+    app.use(function(req,res){
+        res.render('404')
+    });
 
     }
 
    
 
     function ConfigureExpress(app,io){
+
+
         require('./passport/passport-local');
         require('./passport/passport-facebook');
         require('./passport/passport-google')
@@ -85,7 +91,7 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
         app.use(bodyParser.urlencoded({extended:true}));
         // app.use(Validator())
         app.use(session({
-            secret: "thisisachatapp",
+            secret: process.env.SECRET_KEY,
             resave : true,
             saveInitialized:true,
             store : new MongoStore({mongooseConnection: mongoose.connection})
@@ -95,6 +101,8 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
         app.use(passport.initialize());
         app.use(passport.session());
         app.locals._ = _;
+
+       
 
     }
 
