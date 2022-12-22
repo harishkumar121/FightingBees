@@ -1,1 +1,1 @@
-Fighting Bees is platform for football lovers
+Fighting Bees is a platform for football lovers

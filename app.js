@@ -50,6 +50,7 @@ container.resolve(function(users, _, admin, home, group, results, privatechat, p
 
 
 
+        // extra checkcomment
          // Setup router
     const router = require('express-promise-router')()
     users.SetRouting(router);
